@@ -7,7 +7,15 @@
 //
 
 #import <React/UIView+React.h>
+#import <React/RCTViewManager.h>
+#import <React/RCTBridgeDelegate.h>
+#import <React/RCTBridgeModule.h>
+#import <React/RCTBridge.h>
+#import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
 #import <Stripe/Stripe.h>
+
+#import "../../../../ios/lane/AppDelegate.h";
 
 @interface TPSCardField : UIView
 

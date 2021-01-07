@@ -28,9 +28,28 @@
         _paymentCardTextField = [[STPPaymentCardTextField alloc] initWithFrame:self.bounds];
         _paymentCardTextField.delegate = self;
         [self addSubview:_paymentCardTextField];
+        [self setGestureRecognizerDelegate];
         self.backgroundColor = [UIColor clearColor];
     }
     return self;
+}
+- (void) setGestureRecognizerDelegate {
+
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    UITapGestureRecognizer *recognizer =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(handleTap:)];
+    
+    [delegate.window addGestureRecognizer:recognizer];
+}
+
+- (void) handleTap: (UITapGestureRecognizer *)recognizer
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //Code to handle the gesture
+    [delegate.window endEditing:true];
+  
 }
 
 - (void)reactSetFrame:(CGRect)frame {
