@@ -10,6 +10,8 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.devmarvel.creditcardentry.library.CreditCardForm;
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -58,14 +60,14 @@ public class CustomCardInputReactManager extends SimpleViewManager<CreditCardFor
     final CreditCardForm creditCardForm = new CreditCardForm(reactContext, attr);
     setListeners(creditCardForm);
     this.reactContext = reactContext;
-    creditCardForm.post(new Runnable() {
-      @Override
-      public void run() {
-        InputMethodManager inputMethodManager = (InputMethodManager) reactContext.getSystemService(reactContext.INPUT_METHOD_SERVICE);
-        inputMethodManager.toggleSoftInputFromWindow(creditCardForm.getApplicationWindowToken(), InputMethodManager.SHOW_IMPLICIT, 0);
-        creditCardForm.focusCreditCard();
-      }
-    });
+//    creditCardForm.post(new Runnable() {
+//      @Override
+//      public void run() {
+//        InputMethodManager inputMethodManager = (InputMethodManager) reactContext.getSystemService(reactContext.INPUT_METHOD_SERVICE);
+//        inputMethodManager.toggleSoftInputFromWindow(creditCardForm.getApplicationWindowToken(), InputMethodManager.SHOW_IMPLICIT, 0);
+//        creditCardForm.focusCreditCard();
+//      }
+//    });
     return creditCardForm;
   }
 
@@ -92,6 +94,7 @@ public class CustomCardInputReactManager extends SimpleViewManager<CreditCardFor
 
   @ReactProp(name = "securityCode")
   public void setSecurityCode(CreditCardForm view, String securityCode) {
+    Log.d("TAG", "hello?.");
     view.setSecurityCode(securityCode, true);
   }
 
@@ -109,7 +112,6 @@ public class CustomCardInputReactManager extends SimpleViewManager<CreditCardFor
   public void setSecurityCodeTextHint(CreditCardForm view, String securityCodeTextHint) {
     view.setSecurityCodeTextHint(securityCodeTextHint);
   }
-
 
   private void setListeners(final CreditCardForm view){
 
@@ -169,8 +171,8 @@ public class CustomCardInputReactManager extends SimpleViewManager<CreditCardFor
       @Override
       public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         Log.d(TAG, "onTextChanged: CCV = "+charSequence);
-        currentCCV = charSequence.toString();
-        postEvent(view);
+//        currentCCV = charSequence.toString();
+//        postEvent(view);
       }
 
       @Override
