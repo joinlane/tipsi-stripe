@@ -171,8 +171,8 @@ public class CustomCardInputReactManager extends SimpleViewManager<CreditCardFor
       @Override
       public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         Log.d(TAG, "onTextChanged: CCV = "+charSequence);
-//        currentCCV = charSequence.toString();
-//        postEvent(view);
+        currentCCV = charSequence.toString();
+        postEvent(view);
       }
 
       @Override
